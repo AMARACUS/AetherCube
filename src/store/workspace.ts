@@ -1,12 +1,7 @@
 import { create } from 'zustand';
+import type { Tables } from '@/lib/supabase/types';
 
-interface Project {
-  id: string;
-  name: string;
-  description: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+type Project = Tables<'projects'>;
 
 interface WorkspaceState {
   currentProject: Project | null;

@@ -1,13 +1,25 @@
 'use client';
 
-import { Code2, FileCode, FolderOpen, Plus, Settings, Sparkles } from 'lucide-react';
+import { Code2, FileCode, FolderOpen, LogOut, Plus, Settings, Sparkles, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useWorkspaceStore } from '@/store/workspace';
+import { useAuthStore } from '@/store/auth';
 import { Skeleton } from '@/components/ui/skeleton';
+import { createClient } from '@/lib/supabase/client';
+import { useRouter } from 'next/navigation';
 
 export function WorkspaceLayout() {
   const { currentProject, isGenerating, projects } = useWorkspaceStore();
+  const { user, profile, signOut } = useAuthStore();
+  const router = useRouter();
+  const supabase = createClient();
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut();
+    signOut();
+    router.push('/');
+  };
 
   return (
     <div className="flex h-screen bg-gray-950">
@@ -56,10 +68,31 @@ export function WorkspaceLayout() {
           </div>
         </div>
 
-        <div className="p-4 border-t border-gray-700">
+        <div className="p-4 border-t border-gray-700 space-y-2">
+          {/* User Info */}
+          <div className="flex items-center gap-2 px-3 py-2 rounded-md bg-gray-800">
+            <User className="h-4 w-4 text-gray-400" />
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium truncate">
+                {profile?.full_name || user?.email?.split('@')[0] || 'User'}
+              </p>
+              <p className="text-xs text-gray-400 truncate">
+                {user?.email}
+              </p>
+            </div>
+          </div>
+
           <Button variant="ghost" className="w-full justify-start">
             <Settings className="h-4 w-4 mr-2" />
             Settings
+          </Button>
+          <Button
+            variant="ghost"
+            className="w-full justify-start text-red-400 hover:text-red-300 hover:bg-red-950/20"
+            onClick={handleSignOut}
+          >
+            <LogOut className="h-4 w-4 mr-2" />
+            Sign Out
           </Button>
         </div>
       </aside>
