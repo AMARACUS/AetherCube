@@ -67,14 +67,34 @@ AetherCube is a production-ready Web3 vibe coding AI platform that allows users 
 - Node.js 18+ installed
 - npm or yarn package manager
 
-### Installation
+### Quick Start - See the Preview! 👀
+
+**Want to see the app right now?** Follow these 3 simple steps:
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Start the dev server**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Open in your browser**:
+   - Visit: **[http://localhost:3000](http://localhost:3000)**
+   - You should see the AetherCube interface with three panels!
+
+📖 **For detailed preview instructions, troubleshooting, and more options, see [PREVIEW_GUIDE.md](PREVIEW_GUIDE.md)**
+
+### Full Installation
 
 1. **Clone and install dependencies**:
    ```bash
    npm install
    ```
 
-2. **Set up environment variables**:
+2. **Set up environment variables** (optional for Step 1):
    ```bash
    cp .env.local.example .env.local
    ```
@@ -84,6 +104,8 @@ AetherCube is a production-ready Web3 vibe coding AI platform that allows users 
    - `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
    - `ALCHEMY_API_KEY`: Your Alchemy API key for RPC
+
+   **Note**: Environment variables are not required to preview the UI (Step 1).
 
 3. **Run the development server**:
    ```bash
