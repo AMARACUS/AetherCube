@@ -2,20 +2,45 @@
 
 This guide will help you view the AetherCube Web3 AI Builder Platform preview in your browser.
 
+## ⚠️ Common Issue: "http://localhost:3000 not working"
+
+**If you're seeing this error, it's most likely because dependencies aren't installed yet!**
+
+### Quick Fix (Most Common Solution):
+
+```bash
+# Step 1: Install dependencies
+npm install
+
+# Step 2: Start the dev server
+npm run dev
+
+# Step 3: Open http://localhost:3000 in your browser
+```
+
+That's it! The server should now be running at **http://localhost:3000**
+
+---
+
 ## Quick Start (Most Common)
 
 ### Option 1: View in Your Browser (Recommended)
 
-1. **Start the development server:**
+1. **Install dependencies (if not already done):**
+   ```bash
+   npm install
+   ```
+
+2. **Start the development server:**
    ```bash
    npm run dev
    ```
 
-2. **Open your browser:**
+3. **Open your browser:**
    - Navigate to: **http://localhost:3000**
    - The application will automatically load
 
-3. **You should see:**
+4. **You should see:**
    - **Left Sidebar**: AetherCube logo, "New Project" button, and project list
    - **Center Panel**: Vibe Coding Studio with chat interface
    - **Right Sidebar**: Preview/Code toggle with deployment status
@@ -65,6 +90,39 @@ If you're running the dev server on a remote machine or want to access it from a
 
 ## Troubleshooting
 
+### ❌ "Cannot connect" or "localhost:3000 not working"
+
+**Most Common Cause**: Dependencies not installed or dev server not running
+
+**Solution**:
+```bash
+# 1. First, install dependencies
+npm install
+
+# 2. Then start the dev server
+npm run dev
+
+# 3. Wait for "Ready in XXXms" message
+# 4. Open http://localhost:3000 in your browser
+```
+
+**How to verify the server is running:**
+- Look in your terminal for: `✓ Ready in XXXms`
+- You should see: `- Local: http://localhost:3000`
+- If you don't see this, the server isn't running
+
+### Dependencies Not Installed
+
+If you see "command not found" or "Cannot find module" errors:
+
+```bash
+# Install dependencies first
+npm install
+
+# Then start the dev server
+npm run dev
+```
+
 ### Port Already in Use
 
 If you see an error that port 3000 is already in use:
@@ -78,18 +136,6 @@ npm run dev -- -p 3001
 ```
 
 Then access via `http://localhost:3001`
-
-### Dependencies Not Installed
-
-If you see "command not found" or similar errors:
-
-```bash
-# Install dependencies first
-npm install
-
-# Then start the dev server
-npm run dev
-```
 
 ### Browser Shows "Cannot Connect"
 
